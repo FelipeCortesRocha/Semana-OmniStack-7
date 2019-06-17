@@ -1,0 +1,19 @@
+{
+  "name": "semana-omnistack-7",
+  "version": "1.0.0",
+  "description": "Repositório para desenvolvimento da aplicação da Semana Omni Stack 7 da Rocketseat",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XFelipeXCortesX/Semana-OmniStack-7.git"
+  },
+  "author": "Felipe Cortes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XFelipeXCortesX/Semana-OmniStack-7/issues"
+  },
+  "homepage": "https://github.com/XFelipeXCortesX/Semana-OmniStack-7#readme"
+}
