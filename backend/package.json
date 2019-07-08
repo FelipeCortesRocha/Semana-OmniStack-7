@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/XFelipeXCortesX/Semana-OmniStack-7/issues"
   },
-  "homepage": "https://github.com/XFelipeXCortesX/Semana-OmniStack-7#readme"
+  "homepage": "https://github.com/XFelipeXCortesX/Semana-OmniStack-7#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.6.3",
+    "multer": "^1.4.1"
+  }
 }
