@@ -1,4 +1,7 @@
 const Post = require('../models/Post');
+const sharp = require('sharp');
+const path = require('path');
+const fs = require('fs');
 
 module.exports = {
     async index(req, res) {
@@ -11,18 +14,28 @@ module.exports = {
         const { author, place, description, hashtags } = req.body;
         const { filename: image } = req.file;
 
-        if(image) {
-            const post = await Post.create({
-                author,
-                place,
-                description,
-                hashtags,
-                image
-            });
-            
-            res.send(post);
-        } else {
-            res.status(400).send('É necessário enviar uma imagem');
-        }
+        const [name] = image.split('.');
+        const fileName = `${name}.jpg`;
+
+        await sharp(req.file.path)
+            .resize(500)
+            .jpeg({quality: 70})
+            .toFile(
+                path.resolve(req.file.destination, 'resized', fileName)
+            );
+
+        fs.unlinkSync(req.file.path);
+
+        const post = await Post.create({
+            author,
+            place,
+            description,
+            hashtags,
+            image: fileName
+        });
+
+        req.io.emit('post', post);
+        
+        res.send(post);
     }
-}
+};
