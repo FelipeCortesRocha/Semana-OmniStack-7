@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import api from '../services/api';
+
 import './New.css';
 
 class New extends Component {
@@ -11,10 +13,20 @@ class New extends Component {
         hashtags: ''
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
 
-        console.log(this.state);
+        const data = new FormData();
+        
+        data.append('image', this.state.image);
+        data.append('author', this.state.author);
+        data.append('place', this.state.place);
+        data.append('description', this.state.description);
+        data.append('hashtags', this.state.hashtags);
+
+        await api.post('posts', data);
+
+        this.props.history.push('/');
     }
 
     handleImageChange = event => {
